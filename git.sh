@@ -5,3 +5,4 @@ read message
 echo "$message"
 git commit -m "$message"
 git push
+git status
