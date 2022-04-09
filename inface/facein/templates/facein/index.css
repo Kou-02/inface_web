@@ -58,7 +58,7 @@ header {
 	font-size: 60px;
 }
 .welcome-text h1 span {
-	color: #00fecb;
+	color: rgb(13, 15, 141);
 }
 .welcome-text a {
 	border: 1px solid #fff;
