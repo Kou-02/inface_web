@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'facein.app.FaceinConfig',
+    'facein',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
