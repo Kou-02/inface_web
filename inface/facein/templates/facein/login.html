@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,7 @@
             color: red;
         }
         body {
-  background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+  background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8&w=1000&q=80');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -25,7 +24,7 @@ form {
   max-width: 720px;
   margin: auto;
   padding: 30px;
-  background: #2196f3; 
+  background: darkblue; 
 } 
 .container { 
   height: 100px;
@@ -42,19 +41,45 @@ form {
 } 
 </style>
 </head>
-<body>
-    <div class="content-section">
-        <form method="post">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                {{form}}
+<body><header>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="https://crescent.education/wp-content/themes/crescent/theme/images/logo.png" alt="">
+        </div>
+<div style="margin-left: 16%; border-top-width: 0px;border-top-style: solid;border-right-width: 0px;border-right-style: solid;border-bottom-width: 0px;border-bottom-style: solid;border-left-width: 0px;border-left-style: solid;padding-top: 2px;padding-right: 9px;margin-top: 20px;margin-right: 8px;width: 900px;height: 300px;padding-bottom: 99px;">
+    
+    <div class="content-section" style="height: 300px;">
+        <form method="post" style="height: 300px;">
+            <input type="hidden" name="csrfmiddlewaretoken" value="OlriQxlSu91ylGoLRJIApYWi7HKnOhPZKmVxwN41qpeupZUFDIJbtgq8pxdX4XDa">
+            <fieldset class="form-group" style="height: 300px;">
+                
+    
+    
+      
+      <label for="id_username" style="padding-left: 175px;padding-top: 200px;margin-top: 200px;">Username:</label><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" style="margin-top: 50px;margin-left: 15px;">
+      
+      
+    
+  
+
+  
+    <label for="id_password" style="padding-left: 175px;padding-top: 200px;margin-top: 200px;">Password:</label>
+    
+      
+      <input type="password" name="password" autocomplete="current-password" required="" id="id_password" style="margin-top: 50px;margin-left: 20px;">
+      
+      
+        
+      
+    
+  
             </fieldset>
             <div class="form-group">
             <div class="container">
             <div class="center">
                 <button class="btn" type="submit">login</button>  
             </div>
-        </form>
-    </div>
-</body>
-</html>
+        
+    </div></div>
+
+</div></form></div></body></html>
