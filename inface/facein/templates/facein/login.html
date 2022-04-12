@@ -5,6 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .btn{
+            color: blue;
+        }
+        #id_password{
+            color: blueviolet;
+        }
+        #id_username{
+            color: red;
+        }
+        body {
+  background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+form {
+  max-width: 720px;
+  margin: auto;
+  padding: 30px;
+  background: #2196f3; 
+} 
+.container { 
+  height: 100px;
+  position: relative; 
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+} 
+</style>
 </head>
 <body>
     <div class="content-section">
@@ -14,7 +50,9 @@
                 {{form}}
             </fieldset>
             <div class="form-group">
-                <button class="btn" type="submit">login</button>
+            <div class="container">
+            <div class="center">
+                <button class="btn" type="submit">login</button>  
             </div>
         </form>
     </div>
