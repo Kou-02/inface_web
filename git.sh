@@ -8,3 +8,4 @@ git push
 git status
 
 #admin user name admin and password admin
+#test user name test and password asd123FGH$%^
