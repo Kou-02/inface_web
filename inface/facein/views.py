@@ -36,7 +36,10 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     return render(request, 'facein/index.html')
 
-#def facerec(request):
+def facerec(request):
+    return render(request,"facein/facerec.html", {'title': "face",'id':id})
+
+ 
     
 
 
@@ -46,5 +49,6 @@ def login(request):
 
 #def logout(request):
 
+@login_required
 def profile(request):
     return render(request,"facein/profile.html")
