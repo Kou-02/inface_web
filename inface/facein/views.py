@@ -1,7 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators import gzip
-<<<<<<< HEAD
 from django.contrib.auth.models import User
 from .models import *
 from django.core.mail import EmailMessage
@@ -15,7 +14,6 @@ import face_recognition as fc
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.forms import UserCreationForm
-=======
 #import cv2
 #from django.contrib.auth.models import User
 #from .models import *
@@ -30,7 +28,6 @@ from django.contrib.auth.forms import UserCreationForm
 #from django.contrib.auth.decorators import login_required
 #from django.contrib.auth import authenticate,login
 #from django.contrib.auth.forms import UserCreationForm
->>>>>>> refs/remotes/origin/main
 
 @gzip.gzip_page
 
