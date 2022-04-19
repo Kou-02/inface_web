@@ -1,3 +1,4 @@
+import cv2
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators import gzip
@@ -37,6 +38,8 @@ def index(request):
     return render(request, 'facein/index.html')
 
 def facerec(request):
+    cap = cv2.VideoCapture(0)
+    print ("the program is running")
     return render(request,"facein/facerec.html", {'title': "face",'id':id})
 
  
