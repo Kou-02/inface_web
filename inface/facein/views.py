@@ -14,7 +14,7 @@ import face_recognition as fc
 #import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 #import cv2
 #from django.contrib.auth.models import User
 #from .models import *
@@ -47,7 +47,11 @@ def facerec(request):
 
 
 def login(request):
-    form = UserCreationForm()
+    if request.method == 'POST':
+        form = AuthenticationForm(data= request.POST)
+        if form.is_valid():
+            return redirect('admin')
+    
     return render(request, "facein/login.html",)
 
 #def logout(request):
