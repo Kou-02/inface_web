@@ -50,9 +50,13 @@ def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data= request.POST)
         if form.is_valid():
-            return redirect('admin')
+            return redirect('logout')
     
-    return render(request, "facein/login.html",)
+    else:
+        form = AuthenticationForm(data=request.POST)
+
+    
+    return render(request, "facein/login.html", {'form': form})
 
 #def logout(request):
 

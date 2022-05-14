@@ -1,85 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .btn{
-            color: blue;
-        }
-        #id_password{
-            color: blueviolet;
-        }
-        #id_username{
-            color: red;
-        }
-        body {
-  background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8&w=1000&q=80');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-form {
-  max-width: 50%;
-  margin: 2%;
-  padding: 5%;
-  background: darkblue; 
-} 
-.container { 
-  height: 100px;
-  position: relative; 
-}
-
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-} 
-</style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-<body><header>
-    <div class="wrapper">
-        <div class="logo">
-          <a href="/"><img src="https://crescent.education/wp-content/themes/crescent/theme/images/logo.png" alt=""></a>
-        </div>
-<div style="margin-left: 16%; border-top-width: 0px;border-top-style: solid;border-right-width: 0px;border-right-style: solid;border-bottom-width: 0px;border-bottom-style: solid;border-left-width: 0px;border-left-style: solid;padding-top: 2px;padding-right: 9px;margin-top: 20px;margin-right: 8px;width: 900px;height: 300px;padding-bottom: 99px;">
-    
-    <div class="content-section" style="height: 300px;">
-        <form method="post" style="height: 300px;">
-            <input type="hidden" name="csrfmiddlewaretoken" value="OlriQxlSu91ylGoLRJIApYWi7HKnOhPZKmVxwN41qpeupZUFDIJbtgq8pxdX4XDa">
-            <fieldset class="form-group" style="height: 300px;">
-                
-    
-    
-      
-      <label for="id_username" style="padding-left: 175px;padding-top: 200px;margin-top: 200px;">Username:</label><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" style="margin-top: 50px;margin-left: 15px;">
-      
-      
-    
-  
-
-  
-    <label for="id_password" style="padding-left: 175px;padding-top: 200px;margin-top: 200px;">Password:</label>
-    
-      
-      <input type="password" name="password" autocomplete="current-password" required="" id="id_password" style="margin-top: 50px;margin-left: 20px;">
-      
-      
-        
-      
-    
-  
-            </fieldset>
-            <div class="form-group">
-            <div class="container">
-            <div class="center">
-                <button class="btn" type="submit">login</button>  
-            </div>
-        
-    </div></div>
-
-</div></form></div></body></html>
+<body>
+  <form class="site-form" method="post" style="  background-color: rgb(130, 201, 255);
+  width: 150px;
+  border: 15px solid rgb(0, 98, 210);
+  padding: 50px;
+  margin: auto;
+  text-align: center;">
+    {{ form }}
+    {% csrf_token %}
+    <br><br><input type="submit" value="Signin" style="  background-color: rgb(0, 98, 210);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;">
+  </form>
+</body>
+</html>
