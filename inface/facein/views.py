@@ -15,6 +15,8 @@ import face_recognition as fc
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.conf.urls.static import static
+
 #import cv2
 #from django.contrib.auth.models import User
 #from .models import *
@@ -27,7 +29,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 #import face_recognition as fc
 #import os
 #from django.contrib.auth.decorators import login_required
-#from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login as auth_login
 #from django.contrib.auth.forms import UserCreationForm
 
 @gzip.gzip_page
@@ -40,6 +42,8 @@ def index(request):
 def facerec(request):
     cap = cv2.VideoCapture(0)
     print ("the program is running")
+    print (User.pr)
+    
     return render(request,"facein/facerec.html", {'title': "face",'id':id})
 
  
@@ -49,13 +53,15 @@ def facerec(request):
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data= request.POST)
-        if form.is_valid():
-            return redirect('logout')
+        user = authenticate(username= request.POST['username'],password= request.POST['password'])
+        if user is not None:
+
+            auth_login(request, user)
+            return redirect('facerec')
     
     else:
         form = AuthenticationForm(data=request.POST)
 
-    
     return render(request, "facein/login.html", {'form': form})
 
 #def logout(request):
