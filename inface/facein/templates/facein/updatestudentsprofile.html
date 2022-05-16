@@ -1,0 +1,117 @@
+<html><head></head><body><div class="row justify-content-center">
+    <head>
+        <style>
+        .btn{
+                color: green;
+            }
+            #id_password{
+                color: blueviolet;
+            }
+            #id_username{
+                color: red;
+            }
+            body {
+      background-image: url('file:///home/koushikvivek/Downloads/q3NVYX9QB7AUY3WE483VoY.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    form {
+      max-width: 720px;
+      margin: auto;
+      padding: 30px;
+      background: 
+    } 
+    .container { 
+      height: 100px;
+      position: relative; 
+    }
+    
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    } 
+    </style>
+    </head>
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="card card-default rounded-0 shadow">
+            <div class="card-header">
+                <h4 class="card-title"><b>Update Profile</b></h4>
+            </div>
+            <form id="register-user" method="POST" action="{% url 'update-profile' %}" enctype="multipart/form-data">
+                        <div class="mdc-layout-grid">
+                            <div class="mdc-layout-grid__inner">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="first_name" class="control-label">First Name</label>
+                                            <input type="text" class="form-control rounded-0" name="first_name" id="first_name" value="" required="required">
+                    
+                                        </div>
+                                        <div class="form-group mb-3" style="padding-top: 30px;">
+                                            <label for="last_name" class="control-label">Last Name</label>
+                                            <input type="text" class="form-control rounded-0" name="last_name" id="last_name" value="" required="required">
+                                    
+                                        </div>
+                                        <div class="form-group mb-3" style="padding-top: 30px;padding-bottom: 30px;">
+                                            <label for="dob" class="control-label">Birthdate</label>
+                                            <input type="date" class="form-control rounded-0" name="dob" id="dob" value="{{ userProfile.dob|date:'Y-m-d' }}" required="required">
+                                           
+                                        </div>
+                                        <div class="form-group mb-3" style="">
+                                            <label for="contact" class="control-label">Contact</label>
+                                            <input type="text" class="form-control rounded-0" name="contact" id="contact" value="" required="required">
+                                        </div>
+                                        <div class="form-group mb-3" style="padding-top: 30px;">
+                                            <label for="address" class="control-label">Address</label>
+                                            <textarea rows="3" class="form-control rounded-0" name="address" id="address" required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-top: 30px;border-top-style: solid;border-top-width: 0px;width: 90px;height: 167px;">
+                                        <div class="form-group mb-3">
+                                            <label for="email" class="control-label">Email</label>
+                                            <input type="email" class="form-control rounded-0" name="email" id="email" value="" required="required">
+                                           
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="username" class="control-label">Username</label>
+                                            <input type="text" class="form-control rounded-0" name="username" id="username" value="" required="required">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="current_password" class="control-label">Current Password</label>
+                                            <input type="password" class="form-control rounded-0" name="current_password" id="current_password" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+
+                              
+                                <div class="alert alert-danger my-2">
+                                    <p></p>
+                                </div>
+                                
+                                <div class="alert alert-danger my-2">
+                                    <p></p>
+                                </div>
+                                
+                                <div class="form-group mb-3" style="height: 30px;width: 850px;padding-top: 30px;">
+                                    <div class="d-flex w-100 justify-content-end">
+                                        <button class="btn btn-sm rounded-0 btn-primary col-4">
+                                                Update
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form><div class="card-body">
+                <div class="container-fluid">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></html>
