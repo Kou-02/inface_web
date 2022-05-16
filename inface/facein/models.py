@@ -1,12 +1,24 @@
 
+import imp
 from sre_constants import BRANCH
 from django.db import models
 from django.contrib.auth.models import User
+import os
+
+def path_and_rename(instance, filename):
+    upload_to = 'profile_pics'
+    ext = filename.split('.')[-1]
+    # get filename
+    if instance.id_no:
+        filename = '{}.{}'.format(instance.id_no, ext)
+    return os.path.join(upload_to, filename)
+
 
 # Create your models here.
 
 class Profile(models.Model):
 
+    upload='profile_pics'
     desig_choice = (
         ('admin','admin'),
         ('staff','staff'),
@@ -77,10 +89,10 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     id_no = models.CharField(max_length=70,default='0')
     desig = models.CharField(max_length= 20,choices=desig_choice,default= 'student')
     department = models.CharField(max_length=70,choices=department_choice,default='Ph.D')
+    image = models.ImageField(default='default.jpg', upload_to=path_and_rename)
 
 
     def __str__(self):

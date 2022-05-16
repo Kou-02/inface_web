@@ -44,6 +44,9 @@ def facerec(request):
     print ("the program is running")
     print (User.pr)
     
+    #you where going to get the sql data to start the face scanning
+    
+
     return render(request,"facein/facerec.html", {'title': "face",'id':id})
 
  
