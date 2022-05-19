@@ -6,5 +6,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     path('facerec/',views.facerec,name='facerec'),
-    path('login/',views.login,name='signin')
+    path('login/',views.login,name='signin'),
+    path('redirect/',views.facerec)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
