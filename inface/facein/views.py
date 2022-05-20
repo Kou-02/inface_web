@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators import gzip
 from django.contrib.auth.models import User
-from .models import Profile
+# from .models import Profile
 from django.core.mail import EmailMessage
 #import sqlite3
 from sre_constants import SUCCESS
@@ -44,7 +44,7 @@ def facerec(request):
     print ("the program is running")
     i=0
     # while i
-    print (Profile.objects.id_no)
+    # print (Profile.objects.id_no)
     
     #you where going to get the sql data to start the face scanning
 

@@ -166,7 +166,7 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE,default="")
-    ID_no = models.CharField(max_length=70,default='0')
+    id_no = models.CharField(max_length=70,default='0')
     Designation = models.CharField(max_length= 20,choices=desig_choice,default= 'admin')
     Department = models.CharField(max_length=70,choices=department_choice,default='Ph.D')
     Profile_picture = models.ImageField(default='default.jpg', upload_to=path_and_rename)
