@@ -1,4 +1,4 @@
-import cv2
+#import cv2 #koushik
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators import gzip
@@ -10,7 +10,7 @@ from sre_constants import SUCCESS
 from tabnanny import check
 #import cv2
 import numpy as np
-import face_recognition as fc
+#import face_recognition as fc #koshik
 #import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
@@ -40,7 +40,7 @@ def index(request):
     return render(request, 'facein/index.html')
 
 def facerec(request):
-    cap = cv2.VideoCapture(0)
+    #cap = cv2.VideoCapture(0)
     print ("the program is running")
     i=0
     # while i
@@ -53,7 +53,8 @@ def facerec(request):
 
  
     
-
+def redirect(request):
+    return render(request,"/facein/redirect.html")
 
 def login(request):
     if request.method == 'POST':
