@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
 from django.views.decorators import gzip
 from django.contrib.auth.models import User
-from .models import *
+from .models import Profile
 from django.core.mail import EmailMessage
 #import sqlite3
 from sre_constants import SUCCESS
@@ -42,10 +42,12 @@ def index(request):
 def facerec(request):
     cap = cv2.VideoCapture(0)
     print ("the program is running")
-    print (User.pr)
+    i=0
+    # while i
+    print (Profile.objects.id_no)
     
     #you where going to get the sql data to start the face scanning
-    
+
 
     return render(request,"facein/facerec.html", {'title': "face",'id':id})
 

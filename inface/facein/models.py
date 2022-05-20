@@ -1,6 +1,8 @@
 
 import imp
 from sre_constants import BRANCH
+from tkinter import HIDDEN
+from tokenize import Name
 from django.db import models
 from django.contrib.auth.models import User
 import os
@@ -89,10 +91,16 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_no = models.CharField(max_length=70,default='0')
-    desig = models.CharField(max_length= 20,choices=desig_choice,default= 'student')
-    department = models.CharField(max_length=70,choices=department_choice,default='Ph.D')
-    image = models.ImageField(default='default.jpg', upload_to=path_and_rename)
+    ID_no = models.CharField(max_length=70,default='0',primary_key=True)
+    Designation = models.CharField(max_length= 20,choices=desig_choice,default= 'admin')
+    Department = models.CharField(max_length=70,choices=department_choice,default='Ph.D')
+    Profile_picture = models.ImageField(default='default.jpg', upload_to=path_and_rename)
+    if Designation == 'staff':
+        namea = models.CharField(max_length=70,default='0')
+    if Designation == 'student':
+        classa = models.CharField(max_length=20,default='student')
+
+    
 
 
     def __str__(self):
