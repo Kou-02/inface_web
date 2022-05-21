@@ -1,9 +1,12 @@
 
 from ast import mod
 import imp
+from pyexpat import model
+from re import T
 from sre_constants import BRANCH
 from tkinter import HIDDEN
 from tokenize import Name
+from xmlrpc.client import TRANSPORT_ERROR
 from django.db import models
 from django.contrib.auth.models import User
 import os
@@ -78,6 +81,7 @@ class std_details(models.Model):
     subject = models.CharField(max_length=70,default="library")
     semester = models.CharField(max_length=20,default="1")
     hour= models.CharField(max_length=70,default='1')
+    no_of_classes= models.CharField(max_length=70,default='1',blank=True,null=True)
     
     
 
@@ -186,3 +190,4 @@ class attandance(models.Model):
     department=models.CharField(max_length=70,default='Ph.D')
     student=models.CharField(max_length=70,default='')
     date=models.CharField(max_length=70,default="")
+    id_no=models.CharField(max_length=70,default="",null=True,blank=True)
