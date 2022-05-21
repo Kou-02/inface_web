@@ -1,4 +1,5 @@
 
+from ast import mod
 import imp
 from sre_constants import BRANCH
 from tkinter import HIDDEN
@@ -173,5 +174,15 @@ class Profile(models.Model):
     section = models.CharField(max_length=70,default='A')
     semester = models.CharField(max_length=20,default="1")
 
+
+
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class attandance(models.Model):
+    staff=models.CharField(max_length=70,default='none')
+    subject=models.CharField(max_length=70,default='library')
+    section=models.CharField(max_length=20,default='A')
+    department=models.CharField(max_length=70,default='Ph.D')
+    student=models.CharField(max_length=70,default='')
+    date=models.CharField(max_length=70,default="")
