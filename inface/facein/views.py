@@ -4,6 +4,7 @@ import cv2 #koushik
 from msilib.schema import AdminExecuteSequence
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, StreamingHttpResponse
+from django.template import engines
 from django.views.decorators import gzip
 from django.contrib.auth.models import User
 from .models import Profile as pro
@@ -29,6 +30,11 @@ import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login as auth_login
 from django.contrib.auth.forms import UserCreationForm
+import time
+from playsound import playsound
+
+cwd = os.getcwd()
+music = os.path.join(cwd,'done.mp3')
 
 @gzip.gzip_page
 
@@ -39,7 +45,7 @@ def index(request):
 
 def facerec(request):
     start = 2
-    end = 3
+    end = 5
     i=start
     count=pro.objects.all().count()
     print(count)
@@ -48,7 +54,6 @@ def facerec(request):
             loc=pro.objects.filter(id= i).values_list('Profile_picture').first()[0]
             print (loc)
             i+=1
-            cwd = os.getcwd()
             path=os.path.join(cwd,'media',loc).replace("\\","/")
             img = cv2.imread(path)
             img= cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
@@ -68,6 +73,12 @@ def facerec(request):
                 match = fc.compare_faces(encode,encodeface)
                 if match[0] == True:
                     print("hehehe")
+                    print('done')
+                    playsound(music)
+                    print()
+                    time.sleep(2.4)
+                    print(music)
+                    
                     break
 
         else:
