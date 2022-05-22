@@ -17,7 +17,6 @@ import numpy as np
 import face_recognition as fc #koshik
 import os
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate,login
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.conf.urls.static import static
 from django.contrib.auth.models import User
@@ -44,6 +43,20 @@ music = os.path.join(cwd,'done.mp3')
 
 def index(request):
     return render(request, 'facein/index.html')
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data= request.POST)
+        user_in = authenticate(username= request.POST['username'],password= request.POST['password'])
+        if user_in is not None:
+            print('=======================')
+            print (user_in)
+            auth_login(request, user_in)
+            return redirect('redire')
+    
+    else:
+        form = AuthenticationForm(data=request.POST)
+    return render(request, "facein/login.html", {'form': form})
 
 def facerec(request):
     start = 2
@@ -90,28 +103,51 @@ def facerec(request):
             #you where going to get the sql data to start the face scanning
 
 
-    return render(request,"facein/facerec.html", {'title': "face",'id':id})
+    # return render(request,"facein/facerec.html", {'title': "face",'id':id})
 
- 
-    
-def redirect(request):
-    return render(request,"/facein/redirect.html")
 
-def login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data= request.POST)
-        user = authenticate(username= request.POST['username'],password= request.POST['password'])
-        if user is not None:
 
-            auth_login(request, user)
-            return redirect('facerec')
-    
+def redire(request):
+    if request.user.is_authenticated:
+
+        id=request.user.id
+        desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
+        
+        if desig=='staff':
+            return redirect('staff')
+        elif desig=='student':
+            return redirect('student')
+
     else:
-        form = AuthenticationForm(data=request.POST)
+        return redirect('login')
+    
+    return render(request,'facein/redire.html')
 
-    return render(request, "facein/login.html", {'form': form})
 
-#def logout(request):
+def student(request):
+    if request.user.is_authenticated:
+
+        id=request.user.id
+        desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
+        
+        if desig=='student':
+            return render(request,'facein/students.html')
+        else:
+            return redirect('login')
+
+
+def staff(request):
+    if request.user.is_authenticated:
+
+        id=request.user.id
+        desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
+        
+        if desig=='staff':
+            return render(request,'facein/staffs.html')
+        else:
+            return redirect('login')
+
+
 
 @login_required
 def profile(request):
@@ -144,3 +180,5 @@ def mark_att(id):
         print('branch 2')
             
     print("--------------------------------------------------------------------------------")
+
+
