@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html style="padding-right: 60px;" lang="en"><head>
   <style>/*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 *{
@@ -212,14 +211,32 @@ table thead tr{
   color: #fff;
   transition: 0.5rem;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 20%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Attendance Dashboard | By Code Info</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <!-- Font Awesome Cdn Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+  
+
+
   <div class="container">
     <nav>
       <ul>
@@ -229,55 +246,78 @@ table thead tr{
         </a></li>
         <li><a href="#">
           <i class="fas fa-menorah"></i>
-          <span class="nav-item">Dashboard</span>
-        </a></li>
-        <li><a href="#">
-          <i class="fas fa-comment"></i>
-          <span class="nav-item">Message</span>
-        </a></li>
-        <li><a href="#">
-          <i class="fas fa-database"></i>
-          <span class="nav-item">Report</span>
-        </a></li>
-        <li><a href="#">
-          <i class="fas fa-chart-bar"></i>
-          <span class="nav-item">Attendance</span>
-        </a></li>
-        <li><a href="#">
-          <i class="fas fa-cog"></i>
-          <span class="nav-item">Setting</span>
-        </a></li>
-        <li><a href="#">
-          <i class="fas fa-comment-medical"></i>
-          <span class="nav-item">Details</span>
-        </a></li>
+          <span class="nav-item">Overview</span>
+            </a><a href="javascript:void(0)" class="dropbtn">Table</a>
+            
+            
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+    </div>
+  </li>
+</ul>
+          
 
-        <li><a href="#" class="logout">
-          <i class="fas fa-sign-out-alt"></i>
-          <span class="nav-item">Log out</span>
-        </a></li>
-      </ul>
-    </nav>
+          <li><a href="#" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a></li>
+        
+      </nav>
+  
+      
+      <section class="main">
+        <div class="main-top" style="padding-top: 20px;">
+          <h1 style=""> Crescent Smart Attendance</h1>
+          <h5 style="border-right-style: solid;padding-left: x;padding-top: 50px;border-right-width: 0px;">Students</h5>
+          <table style="border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;margin-right: 100px;margin-top: 200px;border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-left-width: 0px;">
+            <tbody style="border-top-style: solid;border-right-style: solid;border-left-style: solid;border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-bottom-style: solid;border-left-width: 0px;"><tr>
+              <th>name</th>
+              <th>Student</th>
+              <th>RRN</th>
+            </tr>
+            <tr>
+              <td>Tarun</td>
+              <td>Student</td>
+              <td>55</td>
+            </tr>
+            <tr>
+              <td>Tarun</td>
+              <td>Student</td>
+              <td>55</td>
+            </tr>
+            <tr>
+              <td>Ernst Handel</td>
+              <td>Roland Mendel</td>
+              <td>Austria</td>
+            </tr>
+            <tr>
+              <td>Island Trading</td>
+              <td>Helen Bennett</td>
+              <td>UK</td>
+            </tr>
+            <tr>
+              <td>Laughing Bacchus Winecellars</td>
+              <td>Yoshi Tannamuri</td>
+              <td>Canada</td>
+            </tr>
+            <tr>
+              <td>Magazzini Alimentari Riuniti</td>
+              <td>Giovanni Rovelli</td>
+              <td>Italy</td>
+            </tr>
+          </tbody></table>
+          
+          
+           
+              
 
-    
-    <section class="main">
-      <div class="main-top">
-        <h1> Crescent Smart Attendance</h1>
-        <h5>Staff</h5>
-          <ul>
-            <li class="dropdown">
-              <a href="javascript:void(0)" class="dropbtn">overview</a>
-              <div class="dropdown-content">
-                <a href="#">profile</a>
-                <li class="dropdown">
-                  <a href="javascript:void(0)" class="dropbtn">staff name</a>
-                  <div class="dropdown-content">
-                    <li class="dropdown">
-                      <a href="javascript:void(0)" class="dropbtn">Department</a>
-                      <div class="dropdown-content">
-                       </div>
-            </li>
-          </ul>         
-</body>
-</html>
+          
+        
+          
+          
+        
+                
 
+
+
+</div></section></div></body></html>
