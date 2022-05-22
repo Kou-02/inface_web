@@ -52,7 +52,7 @@ def login(request):
             print('=======================')
             print (user_in)
             auth_login(request, user_in)
-            return redirect('redire')
+            return redirect('/redire')
     
     else:
         form = AuthenticationForm(data=request.POST)
@@ -106,7 +106,7 @@ def facerec(request):
     # return render(request,"facein/facerec.html", {'title': "face",'id':id})
 
 
-
+@login_required
 def redire(request):
     if request.user.is_authenticated:
 
@@ -114,12 +114,12 @@ def redire(request):
         desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
         
         if desig=='staff':
-            return redirect('staff')
-        elif desig=='student':
-            return redirect('student')
+            return redirect('/staff')
+        elif desig=='students':
+            return redirect('/student')
 
     else:
-        return redirect('login')
+        return redirect('/login')
     
     return render(request,'facein/redire.html')
 
@@ -129,11 +129,11 @@ def student(request):
 
         id=request.user.id
         desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
-        
-        if desig=='student':
+        print(desig)
+        if desig=='students':
             return render(request,'facein/students.html')
         else:
-            return redirect('login')
+            return redirect('/login')
 
 
 def staff(request):
@@ -145,7 +145,7 @@ def staff(request):
         if desig=='staff':
             return render(request,'facein/staffs.html')
         else:
-            return redirect('login')
+            return redirect('/login')
 
 
 
