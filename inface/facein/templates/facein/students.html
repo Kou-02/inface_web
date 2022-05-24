@@ -10,6 +10,28 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #006bd7;
+  color: white;
+}
 body{
   background: rgb(226, 226, 226);
 }
@@ -245,12 +267,21 @@ table thead tr{
       <div class="main-top">
         <h1> Crescent Smart Attendance</h1>
           <ul style="padding-top: 200px;">
-            <div class="myDiv" style="padding-left: 400px;padding-right: 400px;">
-  <div>RRN</div><div>02</div>
-  <div>Name</div><div>Faheem</div>
-  <div>Department<div>IT</div>
-  <div>Section<div>A</div>
-</div>
+            <h1>Attendance</h1>
+
+<table id="customers">
+  <tr>
+    <th>RRN</th>
+    <th>Name</th>
+    <th>subject</th>
+  </tr>
+  <tr>
+    <td>{{ RRN }}</td>
+    <td>{{ name }}</td>
+    <td>{{ attandance }}</td>
+  </tr>
+  
+</table>
 
             
                        </div>
