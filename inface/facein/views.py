@@ -142,7 +142,6 @@ def student(request):
             staff= std_de.objects.filter(section=section,semester=semester,Department=department).values_list('staff').first()[0]
             sub = std_de.objects.filter(section=section,semester=semester,Department=department).values_list('subject').first()[0]
             student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
-            id_no=id
             hour = std_de.objects.filter(staff=staff,subject=sub,section=section,Department=department,semester=semester).values_list('no_of_classes').first()[0]
             count_hour= atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student).count()
             hour = (int(hour)/int(count_hour))
@@ -164,6 +163,18 @@ def staff(request):
         desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
         
         if desig=='staff':
+            section= pro.objects.filter(user_id= id).values_list('section').first()[0]
+            print(section)
+            semester= pro.objects.filter(user_id= id).values_list('semester').first()[0]
+            print(semester)
+            department= pro.objects.filter(user_id= id).values_list('Department').first()[0]
+            print(department)
+            staff= std_de.objects.filter(section=section,semester=semester,Department=department).values_list('staff').first()[0]
+            sub = std_de.objects.filter(section=section,semester=semester,Department=department).values_list('subject').first()[0]
+            student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
+            hour = std_de.objects.filter(staff=staff,subject=sub,section=section,Department=department,semester=semester).values_list('no_of_classes').first()[0]
+            count_hour= atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student).count()
+            hour = (int(hour)/int(count_hour))
             return render(request,'facein/staffs.html')
         else:
             return redirect('/login')
