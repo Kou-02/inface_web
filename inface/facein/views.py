@@ -91,7 +91,7 @@ def facerec(request):
                 if match[0] == True:
                     print("hehehe")
                     print('done')
-                    mark_att(i)
+                    mark_att(pro.objects.filter(id= i).values_list('user_id').first()[0])
                     playsound(music)
                     print()
                     time.sleep(2.4)
@@ -187,6 +187,7 @@ def profile(request):
 
 def mark_att(id):
     print("--------------------------------------------------------------------------------")
+    print(id)
     section= pro.objects.filter(user_id= id).values_list('section').first()[0]
     semester= pro.objects.filter(user_id= id).values_list('semester').first()[0]
     department= pro.objects.filter(user_id= id).values_list('Department').first()[0]
@@ -194,20 +195,19 @@ def mark_att(id):
     sub = std_de.objects.filter(section=section,semester=semester,Department=department).values_list('subject').first()[0]
     student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
     today = date.today()
-    id_no=id
-    print(section+','+semester+','+department+','+staff+','+sub+','+student+','+str(today)+','+str(id_no))
-    if atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student,id_no=id_no):
+    print(section+','+semester+','+department+','+staff+','+sub+','+student+','+str(today)+','+str(id))
+    if atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student,id_no=id):
 
-        last_seen=atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student,id_no=id_no).values_list('date').last()[0]
+        last_seen=atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student,id_no=id).values_list('date').last()[0]
         if last_seen==today:
-            attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id_no)
+            attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id)
             attendance.save()
             print('branch 1')
         else:
             pass
 
     else:
-        attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id_no)
+        attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id)
         attendance.save()
         print('branch 2')
             
