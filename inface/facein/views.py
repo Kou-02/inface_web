@@ -200,11 +200,12 @@ def mark_att(id):
 
         last_seen=atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student,id_no=id).values_list('date').last()[0]
         if last_seen==today:
+            pass
+        else:
             attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id)
             attendance.save()
             print('branch 1')
-        else:
-            pass
+            
 
     else:
         attendance = atten(date=str(today),staff=staff,subject=sub,section=section,department=department,student=student,id_no=id)
