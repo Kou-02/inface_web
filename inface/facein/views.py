@@ -3,6 +3,7 @@ from re import T
 from tokenize import cookie_re
 from tracemalloc import start
 from turtle import st
+from wsgiref.simple_server import demo_app
 import cv2 #koushik
 from msilib.schema import AdminExecuteSequence
 from django.shortcuts import redirect, render
@@ -174,7 +175,10 @@ def staff(request):
             student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
             hour = std_de.objects.filter(staff=staff,subject=sub,section=section,Department=department,semester=semester).values_list('no_of_classes').first()[0]
             count_hour= atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student).count()
-            hour = (int(hour)/int(count_hour))
+            # hour = (int(hour)/int(count_hour))
+
+            print(semester,section,department)
+
             return render(request,'facein/staffs.html')
         else:
             return redirect('/login')
