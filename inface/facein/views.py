@@ -62,8 +62,8 @@ def login(request):
     return render(request, "facein/login.html", {'form': form})
 
 def facerec(request):
-    start = 2
-    end = 5
+    start = 1
+    end = 3
     i=start
     count=pro.objects.all().count()
     print(count)
@@ -175,9 +175,9 @@ def staff(request):
             student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
             hour = std_de.objects.filter(staff=staff,subject=sub,section=section,Department=department,semester=semester).values_list('no_of_classes').first()[0]
             count_hour= atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student).count()
-            # hour = (int(hour)/int(count_hour))
+            # hour = (int(hour)/int(count_hour)) 
 
-            print(semester,section,department)
+            print(semester,section,department,hour,count_hour)
 
             return render(request,'facein/staffs.html')
         else:

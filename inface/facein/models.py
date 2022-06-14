@@ -75,6 +75,7 @@ class std_details(models.Model):
         ('others','others'),
          
     )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     section = models.CharField(max_length=70,default='A')
     Department = models.CharField(max_length=70,choices=department_choice,default='Ph.D')
     staff = models.CharField(max_length=70,default='none')
