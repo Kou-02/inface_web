@@ -179,12 +179,8 @@ def staff(request):
             list_t = atten.objects.filter(staff = staff,subject = sub,section = section,department = department).values_list('id_no')[0]
             list_l = list(list_t)
             print(list_l)
-
-            list_atten = list(set(list_l))
-            
+            list_atten = list(set(list_l)) #avoiding the duplicate values
             print (list_atten)
-            
-
 
             return render(request,'facein/staffs.html')
         else:
