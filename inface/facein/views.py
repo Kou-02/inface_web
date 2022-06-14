@@ -3,6 +3,7 @@ from re import T
 from tokenize import cookie_re
 from tracemalloc import start
 from turtle import st
+from unittest import result
 from wsgiref.simple_server import demo_app
 import cv2 #koushik
 from msilib.schema import AdminExecuteSequence
@@ -63,7 +64,7 @@ def login(request):
 
 def facerec(request):
     start = 1
-    end = 3
+    end = 2
     i=start
     count=pro.objects.all().count()
     print(count)
@@ -92,7 +93,8 @@ def facerec(request):
                 if match[0] == True:
                     print("hehehe")
                     print('done')
-                    mark_att(pro.objects.filter(id= i).values_list('user_id').first()[0])
+                    print (i-1)
+                    mark_att(pro.objects.filter(id= i-1).values_list('user_id').first()[0])
                     playsound(music)
                     print()
                     time.sleep(2.4)
@@ -162,22 +164,27 @@ def staff(request):
 
         id=request.user.id
         desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
+        print (id)
         
         if desig=='staff':
-            section= pro.objects.filter(user_id= id).values_list('section').first()[0]
-            print(section)
-            semester= pro.objects.filter(user_id= id).values_list('semester').first()[0]
-            print(semester)
-            department= pro.objects.filter(user_id= id).values_list('Department').first()[0]
-            print(department)
-            staff= std_de.objects.filter(section=section,semester=semester,Department=department).values_list('staff').first()[0]
-            sub = std_de.objects.filter(section=section,semester=semester,Department=department).values_list('subject').first()[0]
-            student = User.objects.filter(id=(pro.objects.filter(user_id= id).values_list('user_id').first()[0])).values_list('username').first()[0]
-            hour = std_de.objects.filter(staff=staff,subject=sub,section=section,Department=department,semester=semester).values_list('no_of_classes').first()[0]
-            count_hour= atten.objects.filter(staff=staff,subject=sub,section=section,department=department,student=student).count()
-            # hour = (int(hour)/int(count_hour)) 
+            staff= std_de.objects.filter(user_id = id).values_list('staff').first()[0]
+            sub = std_de.objects.filter(user_id = id).values_list('subject').first()[0]
+            section = std_de.objects.filter(user_id = id).values_list('section').first()[0]
+            department = std_de.objects.filter(user_id = id).values_list('Department').first()[0]
+            hour = std_de.objects.filter(user_id = id).values_list('no_of_classes').first()[0]
+            # count_hour= atten.objects.filter(staff = staff,subject = sub,section = section,department=department).count()
+            # atten_per=(int(count_hour)/int(hour))*100
+            # print(atten_per)
+            print(section,department,hour)
+            list_t = atten.objects.filter(staff = staff,subject = sub,section = section,department = department).values_list('id_no')[0]
+            list_l = list(list_t)
+            print(list_l)
 
-            print(semester,section,department,hour,count_hour)
+            list_atten = list(set(list_l))
+            
+            print (list_atten)
+            
+
 
             return render(request,'facein/staffs.html')
         else:
