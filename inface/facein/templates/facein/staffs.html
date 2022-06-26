@@ -270,52 +270,67 @@ tr:nth-child(even) {
             <tbody style="border-top-style: solid;border-right-style: solid;border-left-style: solid;border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-bottom-style: solid;border-left-width: 0px;"><tr>
               <th>RRN</th>
               <th>Name</th>
-              <th>Attendance Percentage</th>
-            </tr>
-            <tr>
-              <td>55</td>
-              <td>tarun</td>
-              <td>95%</td>
-             
-            </tr>
-            <tr>
-              <td>23</td>
-              <td>kishen</td>
-              <td>90%</td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td>faheem</td>
-              <td>88%</td>
-            </tr>
-            <tr>
-              <td>53</td>
-              <td>shams</td>
-              <td>85%</td>
-            </tr>
-            <tr>
-              <td>27</td>
-              <td>Ali</td>
-              <td>99%</td>
-            </tr>
-            <tr>
-              <td>31</td>
-              <td>naif</td>
-              <td>100%</td>
-            </tr>
-          </tbody></table>
-          
-          
-           
-              
-
-          
-        
-          
-          
-        
-                
+              <th>Attendance Percentage</th></tr>
+              {% for i in post %}
+              <tr><td>{{ i.rrn }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.per}}</td></tr>
+              {% endfor %}  
 
 
 
 </div></section></div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+<table style="border-top-style: solid;border-right-style: solid;border-bottom-style: solid;border-left-style: solid;margin-right: 100px;margin-top: 200px;border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-left-width: 0px;">
+  <tbody style="border-top-style: solid;border-right-style: solid;border-left-style: solid;border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-bottom-style: solid;border-left-width: 0px;"><tr>
+    <th>RRN</th>
+    <th>Name</th>
+    <th>Attendance Percentage</th>
+  </tr>
+  <tr>
+    <td>55</td>
+    <td>tarun</td>
+    <td>95%</td>
+   
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>kishen</td>
+    <td>90%</td>
+  </tr>
+  <tr>
+    <td>02</td>
+    <td>faheem</td>
+    <td>88%</td>
+  </tr>
+  <tr>
+    <td>53</td>
+    <td>shams</td>
+    <td>85%</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>Ali</td>
+    <td>99%</td>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>naif</td>
+    <td>100%</td>
+  </tr>
+</tbody></table> -->

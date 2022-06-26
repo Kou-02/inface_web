@@ -64,14 +64,18 @@ def login(request):
 
 def facerec(request):
     start = 1
-    end = 2
+    end = 4
     i=start
     count=pro.objects.all().count()
     print(count)
     while True:
-        if i <=end:
-            loc=pro.objects.filter(id= i).values_list('Profile_picture').first()[0]
+        loc=pro.objects.filter(id= i).values_list('Profile_picture').first()[0]       
+        print (loc == "default.jpg")
+        print(loc)
+        if i <=end and loc != "default.jpg":
+            # loc=pro.objects.filter(id= i).values_list('Profile_picture').first()[0]
             print (loc)
+            print(type(loc))
             i+=1
             path=os.path.join(cwd,'media',loc).replace("\\","/")
             img = cv2.imread(path)
@@ -101,7 +105,8 @@ def facerec(request):
                     print(music)
                     
                     break
-
+        elif loc == "default.jpg":
+            i+=1
         else:
             i=start
                     
@@ -116,6 +121,7 @@ def redire(request):
     if request.user.is_authenticated:
 
         id=request.user.id
+        print(id)
         desig=pro.objects.filter(user_id=id).values_list('Designation').first()[0]
         
         if desig=='staff':
@@ -176,13 +182,46 @@ def staff(request):
             # atten_per=(int(count_hour)/int(hour))*100
             # print(atten_per)
             print(section,department,hour)
-            list_t = atten.objects.filter(staff = staff,subject = sub,section = section,department = department).values_list('id_no')[0]
-            list_l = list(list_t)
-            print(list_l)
-            list_atten = list(set(list_l)) #avoiding the duplicate values
-            print (list_atten)
+            
+            list_t = atten.objects.filter(staff = staff,subject = sub,section = section,department = department).values_list('id_no')
+            list_atten = list(set(list_t))
+            print(list_atten)
+            #######################################################
+            name_list = []
+            percentage = []
+            rrn_list = []
+            j=0
+            hour = std_de.objects.filter(user_id = id,staff = staff,subject = sub,section=section,Department=department).values_list("no_of_classes").first()[0]
+            for rrn in list_atten:
+                
+                rrn_list.append(rrn[0])
+                name = User.objects.filter(id = rrn[0]).values_list("username").first()[0]
+                name_list.append(name)
+                count = atten.objects.filter(id_no = rrn[0]).values_list('id_no').count()
+                percent = (int(count)/int(hour))*100
+                percentage.append(percent)
+                print("#############in loop##########")
+                print(name,count,percent)
+                print("#############in loop##########")
+                j = j+1
+            print("#############-------------##########")
+            print(name_list,percentage)
+            print("#############-------------##########")
+            i=0
 
-            return render(request,'facein/staffs.html')
+            print (len(rrn_list))
+
+            list_= []
+            while i < len(rrn_list):
+                temp = {}
+                temp['rrn']=(rrn_list[i])
+                temp['name']=(name_list[i])
+                temp['per']=(percentage[i])
+                i=i+1
+                list_.append(temp)
+            #######################################################
+
+            return render(request,'facein/staffs.html',{'post':list_})
         else:
             return redirect('/login')
 
