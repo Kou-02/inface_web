@@ -221,6 +221,7 @@ def staff(request):
                 list_.append(temp)
             #######################################################
 
+
             return render(request,'facein/staffs.html',{'post':list_})
         else:
             return redirect('/login')
